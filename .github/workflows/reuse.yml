@@ -4,10 +4,14 @@ on: [workflow_dispatch]
 
 jobs:
   call-workflow:
-    uses: ./.github/workflows/reusable.yml
+    runs-on: ubuntu-latest
     strategy: 
       matrix: 
-        who-to-greet: ['@I-Monev', 'someone else']
+        greet-params: ['@I-Monev', 'someone else']
+    steps:
+      - uses: ./.github/workflows/reusable.yml
+        with: 
+          who-to-greet: ${{matrix.greet-params}}
       
   use-output:
     runs-on: ubuntu-latest
