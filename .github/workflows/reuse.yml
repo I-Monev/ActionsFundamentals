@@ -5,10 +5,9 @@ on: [workflow_dispatch]
 jobs:
   call-workflow:
     uses: ./.github/workflows/reusable.yml
-    with:
-      strategy:
-        matrix:
-          who-to-greet: ['@I-Monev', 'someone else']
+    strategy: 
+      matrix: 
+        who-to-greet: ['@I-Monev', 'someone else']
       
   use-output:
     runs-on: ubuntu-latest
